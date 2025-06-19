@@ -1,0 +1,155 @@
+.title {
+    width: 100%;
+    height: 100px;
+    background-color: #f9f9f988;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: balck;
+    font-size: 24px; 
+    border:solid 2px black;
+    border-radius:15px;
+    box-shadow: 10px 5px 30px rgba(4, 12, 14, 0.8);
+   
+    
+}
+
+.title  h2{
+    text-shadow: 10px 5px 30px rgba(4, 12, 14, 0.8);
+}
+
+table {
+    cursor: pointer;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(238, 238, 238);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+table thead {
+    
+    background-color: #1276daef;
+    color: white;
+}
+
+table thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+table tbody td:last-child {
+    text-align: center;
+}
+
+
+button {
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    background-color: #db8278;
+    transform: scale(1.12);
+}
+
+
+button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+
+/* Smartphones - jusqu'à 600px */
+@media (max-width: 600px) {
+  .title {
+    height: auto;
+    padding: 20px 10px;
+    font-size: 18px;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .title h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  table thead th,
+  table tbody td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+}
+
+
+/* Tablettes - entre 601px et 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .title {
+    font-size: 20px;
+    height: 80px;
+    padding: 10px;
+  }
+
+  .title h2 {
+    font-size: 22px;
+  }
+
+  table thead th,
+  table tbody td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+}
+
+
+/* Grands écrans - plus de 1024px */
+@media (min-width: 1025px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .title h2 {
+    font-size: 26px;
+  }
+
+  table thead th,
+  table tbody td {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}

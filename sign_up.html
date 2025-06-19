@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S'inscrire</title>
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="static/css/auth/authstyle.css">
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+    <style>
+        body{
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <form action="login.html">
+            <h1>S'inscrire</h1>
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" id="email" placeholder="E-mail" required>
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password1" placeholder="Mot de passe" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password2" placeholder="Confirmez le mot de passe" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox" name="is_doctor"> Je suis un docteur</label>
+                <a href="rgister.html">Mot de passe oublié ?</a>
+            </div>
+            <button type="submit" class="btn">S'inscrire</button>
+            <div class="register-link">
+                <p>J'ai un compte !! <a href="login.html">Se connecter</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

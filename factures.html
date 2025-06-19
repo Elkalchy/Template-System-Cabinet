@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Factures</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app/styleFactures.css">
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+            <h2>Gestion de Cabinet </h2>
+            <ul>
+                <li data-page="accueil">
+                    <a href="index.html"><i class='bx bx-home'></i> Accueil</a>
+                </li>
+                <li data-page="Attente">
+                    <a href="attente.html"><i class='bx bx-time'></i> Salle d'attente</a>
+                </li>
+                <li data-page="patients">
+                    <a href="patients.html"><i class='bx bx-user'></i> Gestion des Patients</a>
+                </li>
+                <li data-page="rendez_vous">
+                    <a href="rendez_vous.html" ><i class='bx bx-calendar'></i> Rendez-vous</a>
+                </li>
+                <li data-page="factures">
+                    <a href="factures.html" class="active"
+                    ><i class='bx bx-file'></i> Factures</a>
+                </li>
+                <li data-page="historique">
+                    <a href="historique.html">
+                        <i class='bx bx-data'></i> Historique
+                    </a>
+                </li>
+                <li data-page="settings">
+                    <a href="settings.html"><i class='bx bx-cog'></i> Paramètres</a>
+                </li>
+
+                <li data-page="auth">
+                    <a href="login.html"><i class='bx bx-log-out'></i> Déconnecter Ossama</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="billing-header">
+                <div class="input-container" style="float: right;">
+                    <i class="bx bx-search"></i>
+                    <input id="search-input" type="text" placeholder=" Rechercher une facture...">
+                </div>
+                <h1>Gestion des Factures </h1>
+                <p>Visualisez et gérez toutes les factures des patients.</p>
+            </header>
+            <!-- Tableau des factures -->
+            <section class="billing-table">
+
+                <!-- Modale d'ajout/modification -->
+                <div class="modal-container" id="customModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ajouter une nouvel facture</h4>
+                            <button class="btn-close" onclick="closeModal()">X</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="myForm" action="" method="post">
+                                <span class="boderline"></span>
+                                <label id="label-name" for="patient-name">N° Carte Nationel du Patient :</label>
+                                <input type="text" name="patient" id="cnie"
+                                    placeholder="Saisissez le N° Carte Nationale du patient" required>
+
+
+                                <label for="appointment-time">Total Amount:</label>
+                                <input type="number" name="total_amount" id="total_amount" required>
+
+                                <label for="status">Statut :</label>
+                                <select id="status" name="status" class="status-select">
+                                    <option value="paid">
+                                        Payée
+                                    </option>
+                                    <option value="pending">En attente
+                                    </option>
+                                    <option value="cancelled">Annulée
+                                    </option>
+                                </select>
+                                <label for="appointment-time">Description :</label>
+                                <textarea name="description" id="description" rows="4"></textarea><br><br>
+                            </form>
+                        </div>
+                        <div class="modal-footer" style="float: right;">
+                            <button class="btnFermer" onclick="closeModal()">Fermer</button>
+                            <button type="submit" class="btn1" form="myForm">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="titleTableau" id="title">
+                    <h2>Liste des Factures |</h2>
+
+                    <div class="add-patient-link">
+                        <i class='bx bx-plus-circle' onclick="openModal()" style="cursor: pointer;"
+                            title="Ajouter une facture"></i>
+                    </div>
+                </div>
+                <br>
+                <table id="patients-table">
+                    <thead>
+                        <tr>
+                            <th>Nom du Patient</th>
+                            <th>Id National</th>
+                            <th>Date</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
+                            <th style="text-align:center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">Aucun rendez-vous trouvé.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Recherche dans le tableau des patients
+            const searchInput = document.getElementById('search-input');
+            const patientTable = document.getElementById('patients-table');
+
+            if (searchInput && patientTable) {
+                const rows = patientTable.querySelectorAll('tbody tr');
+
+                searchInput.addEventListener('input', function () {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    rows.forEach(row => {
+                        const matchFound = [...row.querySelectorAll('td')].some(cell =>
+                            cell.textContent.toLowerCase().includes(searchTerm)
+                        );
+                        row.style.display = matchFound ? '' : 'none';
+                    });
+                });
+            }
+        });
+
+
+        // Fonctions d'ouverture et de fermeture de la modale
+        function openModal() {
+            const modal = document.getElementById("customModal");
+            const patientTable = document.getElementById("patients-table");
+            const title = document.getElementById("title");
+
+            if (modal) modal.style.display = "flex";
+            if (patientTable) patientTable.style.display = "none";
+            if (title) title.style.display = "none";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("customModal");
+            const patientTable = document.getElementById("patients-table");
+            const title = document.getElementById("title");
+
+            if (modal) modal.style.display = "none";
+            if (patientTable) patientTable.style.display = "table";
+            if (title) title.style.display = "flex";
+        }
+    </script>
+</body>
+
+</html>

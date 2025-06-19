@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app/styleParametre.css">
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+            <h2>Gestion de Cabinet </h2>
+            <ul>
+                <li data-page="accueil">
+                    <a href="index.html"><i class='bx bx-home'></i> Accueil</a>
+                </li>
+                <li data-page="Attente">
+                    <a href="attente.html"><i class='bx bx-time'></i> Salle d'attente</a>
+                </li>
+                <li data-page="patients">
+                    <a href="patients.html"><i class='bx bx-user'></i> Gestion des Patients</a>
+                </li>
+                <li data-page="rendez_vous">
+                    <a href="rendez_vous.html"><i class='bx bx-calendar'></i> Rendez-vous</a>
+                </li>
+                <li data-page="factures">
+                    <a href="factures.html"><i class='bx bx-file'></i> Factures</a>
+                </li>
+                <li data-page="historique">
+                    <a href="historique.html">
+                        <i class='bx bx-data'></i> Historique
+                    </a>
+                </li>
+                <li data-page="settings">
+                    <a href="settings.html" class="active"><i class='bx bx-cog'></i> Paramètres</a>
+                </li>
+
+                <li data-page="auth">
+                    <a href="login.html"><i class='bx bx-log-out'></i> Déconnecter Ossama</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="settings-header">
+                <h1>Paramètres </h1>
+                <p>Personnalisez votre expérience et gérez les configurations de la clinique.</p>
+            </header>
+
+            <!-- Section Profil -->
+            <section class="profile-settings">
+                <div class="titleTableau">
+                    <h2>Paramètres du Profil</h2>
+                </div>
+                <form method="POST" action="">
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" id="username" value="ossama" name="username">
+
+                    <label for="email">Adresse e-mail :</label>
+                    <input type="email" id="email" value="ossama@gmail.com" name="email">
+
+                    <label for="password"> le mot de passe Actuel :</label>
+                    <input type="password" id="password" name="password1" placeholder="Ancien mot de passe">
+
+
+                    <label for="password">Nouveau mot de passe :</label>
+                    <input type="password" id="password" name="password2" placeholder="Nouveau mot de passe">
+
+                    <button type="submit">Sauvegarder les Changements</button>
+                </form>
+            </section>
+            <!-- Section Préférences -->
+            <section class="preferences-settings" id="users">
+                <div class="titleTableau">
+                    <h2>Les Users</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom du User</th>
+                            <th style="text-align:center">E-mail</th>
+                            <th style="text-align:center">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ossama</td>
+                            <td>ossama@gmail.com</td>
+                            <td>
+                                <button class="btn-edit" title="Modifier les Users" onclick="window.location.href=''">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </main>
+    </div>
+
+
+    <script>
+        // Ajoute un écouteur sur chaque ligne du tableau
+        document.addEventListener("DOMContentLoaded", function () {
+            const rows = document.querySelectorAll("table tbody tr");
+
+            rows.forEach(row => {
+                row.addEventListener("click", function () {
+                    rows.forEach(r => r.classList.remove("selected"));
+
+                    this.classList.add("selected");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+.appointments-header {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f988;
+  border-radius: 10px;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.appointments-header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.appointments-header p {
+  color: #000;
+  font-size: 14px;
+  text-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.input-container i {
+  margin-right: 5px;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+}
+
+.input-container input {
+  width: 200px;
+  padding: 10px 10px 10px 30px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-container input:hover::placeholder {
+  color: #000;
+}
+
+.input-container input:focus {
+  border-color: #00dbfd;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
+}
+
+.titleTableau {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f988;
+  border-radius: 10px;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-appointment h2,
+.appointments-table h2 {
+  margin: 10px;
+  font-size: 20px;
+}
+
+
+
+
+.add-patient-link {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #007bff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.add-patient-link i {
+  font-size: 23px;
+  transition: all 0.7s ease-in-out;
+  margin-right: 730px; 
+}
+
+.add-patient-link i:hover {
+  color: #000;
+  transform: scale(1.2);
+  text-shadow: 10px 5px 20px rgba(4, 12, 14, 0.8);
+}
+
+
+table {
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+table thead {
+  background-color: #1276daef;
+  color: white;
+}
+
+table thead th {
+  padding: 10px;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+table tbody td:last-child {
+  text-align: center;
+}
+
+
+table tbody tr.selected {
+  background-color: #d0e7ff;
+  color: #1276da; 
+}
+
+button {
+  padding: 5px 10px;
+  font-size:16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+button.btn-edit {
+  background-color: #f39c12;
+  color: white;
+}
+
+button.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+
+.status.completed {
+  background-color: #27ae60;
+  color: white;
+}
+
+.status.pending {
+  background-color: #f39c12;
+  color: white;
+}
+
+.status.cancelled {
+  background-color: #e74c3c;
+  color: white;
+}
+
+
+.modal-container {
+  position: fixed;
+  overflow-y: scroll;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: 280px;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: left;
+  align-items: center;
+}
+
+.modal-content {
+  margin-top: 10%;
+  margin-left: 12%;
+  background-color: rgba(25, 199, 252,0.2);
+  padding: 20px;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 40px rgba(25, 199, 252, 0.8);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d6efd;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header h4 {
+  margin: 0 auto;
+}
+
+.btn-close {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal-body {
+  margin-top: 15px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  background: linear-gradient(135deg, #a2d9ff, #ffffff);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+  border: 2px solid #a2d9ff;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid rgb(157, 195, 211);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: rgb(0, 179, 255);
+  box-shadow: 1px 1px 10px rgba(0, 179, 255, 0.8);
+}
+
+.modal-footer .submit {
+  font-size: 18px;
+}
+
+.btnFermer {
+  margin-top: 10px;
+  background-color: #fd0d00;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  margin-left: 15px;
+  background-color: #00dbfd;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0012b3;
+  letter-spacing: 0.3px;
+}

@@ -1,0 +1,500 @@
+.dossier-container {
+  padding: 20px;
+  max-width: 950px;
+  margin: auto;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+}
+
+.patient-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.visite-count {
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #555;
+}
+
+.dossier-list-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+
+.dossier-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.dossier-item {
+  width:170px ;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  margin: 10px;
+}
+
+.dossier-item:hover {
+  transform: translate(6px, -6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.9);
+}
+
+.dossier-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dossier-icon {
+  font-size: 35px;
+  color: #f7b731;
+  margin-right: 10px;
+}
+
+.dossier-id {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.dossier-actif {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  color: #28a745;
+  margin-left: 10px;
+}
+
+.actif-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #28a745;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+
+.dossier-actions {
+  margin-top: 10px;
+  font-size: 0.95em;
+  padding-left: 18px;
+}
+
+.dossier-actions a {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+
+.dossier-actions a i {
+  font-size: 27px;
+  transition: all 0.3s ease-in-out;
+}
+
+.dossier-actions a i:hover {
+  text-decoration: underline;
+  color: #000000;
+}
+
+
+.dossier-vide {
+  text-align: center;
+  font-style: italic;
+  color: #999;
+}
+
+.masqueVisite i {
+  font-size: 30px;
+  color: #555;
+  transition: all 0.4s ease-in-out;
+}
+
+
+
+.ajouter-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: #1194ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.ajouter-btn:hover {
+  background: #1194ff;
+  color: #000;
+
+  ;
+}
+
+table {
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+table thead {
+  background-color: #1276daef;
+  color: white;
+}
+
+table thead th {
+  padding: 10px;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+table tbody td:last-child {
+  text-align: center;
+}
+
+
+table tbody tr.selected {
+  background-color: #d0e7ff;
+  color: #1276da;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+button.btn-edit {
+  background-color: #f39c12;
+  color: white;
+}
+
+button.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+.modal-container {
+  position: fixed;
+  overflow-y: scroll;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: 280px;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: left;
+  align-items: center;
+}
+
+.modal-content {
+  margin-top: 25px;
+  margin-left: 12%;
+  background-color: rgba(25, 199, 252, 0.2);
+  padding: 20px;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 40px rgba(25, 199, 252, 0.8);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d6efd;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header h4 {
+  margin: 0 auto;
+}
+
+.btn-close {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal-body {
+  margin-top: 15px;
+
+}
+
+.analyseFields {
+  gap: 15px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  background: linear-gradient(135deg, #a2d9ff, #ffffff);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+  border: 2px solid #a2d9ff;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid rgb(157, 195, 211);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+form select{
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  outline: none;
+  border: 2px solid rgb(157, 195, 211);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: rgb(0, 179, 255);
+  box-shadow: 1px 1px 10px rgba(0, 179, 255, 0.8);
+}
+
+.modal-footer .submit {
+  font-size: 18px;
+}
+
+.btnFermer {
+  margin-top: 10px;
+  background-color: #fd0d00;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  margin-left: 15px;
+  background-color: #00dbfd;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0012b3;
+  letter-spacing: 0.3px;
+}
+
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 10px;
+}
+
+.switch-label input[type="checkbox"] {
+  display: none;
+}
+
+.switch-slider {
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 15px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.switch-slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 2px;
+  top: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+/* Lorsque le bouton est coché */
+.switch-label input:checked+.switch-slider {
+  background-color: #28a745;
+}
+
+.switch-label input:checked+.switch-slider::before {
+  transform: translateX(24px);
+}
+
+@media (max-width: 768px) {
+  .dossier-container {
+    padding: 15px;
+    margin: 10px;
+    width: 95%;
+  }
+
+  .patient-title,
+  .dossier-list-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .visite-count {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .dossier-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dossier-item {
+    width: 90%;
+  }
+
+  .dossier-actions a {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .ajouter-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table, table tbody, table tr, table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+    background: #fff;
+  }
+
+  table td {
+    text-align: left;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+
+  .modal-container {
+    margin-left: 0;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .modal-content {
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .modal-header h4 {
+    font-size: 18px;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+  }
+
+  .switch-label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .switch-slider {
+    margin-top: 5px;
+  }
+}

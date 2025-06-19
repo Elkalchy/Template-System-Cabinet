@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salle D'attente</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app/stylePatients.css">
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+            <h2>Gestion de Cabinet </h2>
+            <ul>
+                <li data-page="accueil">
+                    <a href="index.html"><i class='bx bx-home'></i> Accueil</a>
+                </li>
+                <li data-page="Attente">
+                    <a href="attente.html"><i class='bx bx-time'></i> Salle d'attente</a>
+                </li>
+                <li data-page="patients">
+                    <a href="patients.html" class="active"><i class='bx bx-user'></i> Gestion des Patients</a>
+                </li>
+                <li data-page="rendez_vous">
+                    <a href="rendez_vous.html"><i class='bx bx-calendar'></i> Rendez-vous</a>
+                </li>
+                <li data-page="factures">
+                    <a href="factures.html"><i class='bx bx-file'></i> Factures</a>
+                </li>
+                <li data-page="historique">
+                    <a href="historique.html">
+                        <i class='bx bx-data'></i> Historique
+                    </a>
+                </li>
+                <li data-page="settings">
+                    <a href="settings.html"><i class='bx bx-cog'></i> Paramètres</a>
+                </li>
+
+                <li data-page="auth">
+                    <a href="login.html"><i class='bx bx-log-out'></i> Déconnecter Ossama</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="patients-header">
+                <div class="input-container" style="float: right;">
+                    <i class="bx bx-search"></i>
+                    <input type="text" id="search-input" onkeyup="searchPatient(this.value)"
+                        placeholder="Rechercher un patient...">
+                </div>
+                <h1>Gestion des Patients </h1>
+                <p>Ici, vous pouvez afficher et gérer les détails des patients.</p>
+            </header>
+
+            <!-- Tableau des patients -->
+            <section class="patients-table">
+                <!-- Modale d'ajout/modification -->
+                <div class="modal-container" id="customModal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ajouter un patient </h4>
+                            <button class="btn-close" onclick="closeModal()">X</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="myForm" action="" method="post">
+                                <label for="patient-name">Nom du Patient :</label>
+                                <input type="text" id="patient-name" name="nom" placeholder="Saisissez le nom" required>
+
+                                <label for="patient-prenom">Prénom du Patient :</label>
+                                <input type="text" id="patient-prenom" name="prenom" placeholder="Saisissez le prénom"
+                                    required>
+
+                                <label for="patient-gender">Genre :</label>
+                                <select id="patient-gender" name="gender">
+                                    <option value="M">Homme</option>
+                                    <option value="F">Femme</option>
+                                </select>
+
+                                <label for="patient-age">Date de Naissance :</label>
+                                <input type="date" id="patient-age" name="date" required>
+
+                                <label for="patient-adress">Adresse :</label>
+                                <input type="text" id="patient-adress" name="adress" placeholder="Saisissez l'adresse"
+                                    required>
+
+                                <label for="patient-phone">Téléphone :</label>
+                                <input type="text" id="patient-phone" name="phone" placeholder="Saisissez le téléphone"
+                                    required>
+
+                                <label for="patient-cnie">N° Carte Nationale :</label>
+                                <input type="text" id="patient-cnie" name="cnie" placeholder="Saisissez le CNIE"
+                                    required>
+
+
+                                <label for="patient-statut">Statut :</label>
+                                <select id="patient-statut" name="statut">
+                                    <option value="actif">Actif</option>
+                                    <option value="inactif">Inactif</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="modal-footer" style="float: right;">
+                            <button class="btnFermer" onclick="closeModal()">Fermer</button>
+                            <button type="submit" class="btn1" form="myForm">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tableau des patients -->
+                <div class="titletableau" id="title">
+                    <h2>Liste des patients |</h2>
+                    <div class="add-patient-link">
+                        <i class='bx bx-user-plus' onclick="openModal()" style="cursor: pointer;"
+                            title="Ajouter un patient"></i>
+                    </div>
+                </div>
+                <br />
+                <table id="patients-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Date Naissance</th>
+                            <th>Téléphone</th>
+                            <th>N° CNIE</th>
+                            <th style="text-align:center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ossama Roubal</td>
+                            <td>25</td>
+                            <td>01234567890</td>
+                            <td>XX 25454</td>
+                            <td>
+                                <button class="btn-edit" onclick="window.location.href=''" title="Modifier">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+
+                                <button class="btn-delete" onclick="window.location.href=''" title="Supprimer">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+
+                                <button class="btn-details" onclick="window.location.href='liste_dossiers.html'" title="Détails">
+                                    <i class='bx bx-file'></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Ahmed Youssefi</td>
+                            <td>19</td>
+                            <td>01234567890</td>
+                            <td>XX 000000</td>
+                            <td>
+                                <button class="btn-edit" onclick="window.location.href=''" title="Modifier">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+
+                                <button class="btn-delete" onclick="window.location.href=''" title="Supprimer">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+
+                                <button class="btn-details" onclick="window.location.href=''" title="Détails">
+                                    <i class='bx bx-file'></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Fonction pour rechercher un patient dans le tableau
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search-input');
+            const rows = document.querySelectorAll('#patients-table tbody tr');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                rows.forEach(function (row) {
+                    const cells = row.querySelectorAll('td');
+                    let matchFound = false;
+
+                    cells.forEach(function (cell) {
+                        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                            matchFound = true;
+                        }
+                    });
+
+                    row.style.display = matchFound ? '' : 'none';
+                });
+            });
+        });
+
+        // Fonction pour afficher et cacher la modale
+        function openModal() {
+            document.getElementById("customModal").style.display = "flex";
+            document.getElementById("patients-table").style.display = "none";
+            document.getElementById("title").style.display = "none";
+        }
+
+        function closeModal() {
+            document.getElementById("customModal").style.display = "none";
+            document.getElementById("patients-table").style.display = "table";
+            document.getElementById("title").style.display = "flex";
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+
+.settings-header {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f988;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+.settings-header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+.settings-header p {
+    color: #000000;
+    font-size: 14px;
+}
+
+
+.titleTableau {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f988;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+section h2 {
+    margin: 10px;
+    font-size: 20px;
+}
+section {
+    margin-bottom: 30px;   
+}
+
+section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+
+form {
+    padding: 30px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin:0 10px 20px 10px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: solid 2px #aae8f1;
+    border-radius: 10px;
+    
+}
+
+
+form input:focus{
+    border: none;
+    border-color: #00dbfd;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
+    background: white;
+    transform: scale(1.001);
+    transition: all 0.3s ease-in-out;
+}
+form input::placeholder {
+  color: #000;
+  opacity: 0.7;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+
+form button:hover{
+    background: #1167e9;
+    letter-spacing: 1px;
+    cursor: pointer;
+    
+}
+
+
+    
+table {
+    cursor: pointer;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(238, 238, 238);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+table thead {
+    background-color: #1276daef;
+    color: white;
+}
+
+table thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+table tbody td:last-child {
+    text-align: center;
+}
+
+/* Style de la ligne sélectionnée */
+table tbody tr.selected {
+    background-color: #d0e7ff; /* Couleur de fond pour la ligne sélectionnée */
+    color: #1276da; /* Couleur du texte de la ligne sélectionnée */
+}
+
+
+
+button.btn-edit {
+  background-color: #f39c12;
+  color: white;
+}
+
+
+
+table button:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}

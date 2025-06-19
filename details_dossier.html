@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier Médical</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app/styleDetails_dossiers.css">
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+            <h2>Gestion de Cabinet </h2>
+            <ul>
+                <li data-page="accueil">
+                    <a href="index.html"><i class='bx bx-home'></i> Accueil</a>
+                </li>
+                <li data-page="Attente">
+                    <a href="attente.html"><i class='bx bx-time'></i> Salle d'attente</a>
+                </li>
+                <li data-page="patients">
+                    <a href="patients.html" class="active"><i class='bx bx-user'></i> Gestion des Patients</a>
+                </li>
+                <li data-page="rendez_vous">
+                    <a href="rendez_vous.html"><i class='bx bx-calendar'></i> Rendez-vous</a>
+                </li>
+                <li data-page="factures">
+                    <a href="factures.html"><i class='bx bx-file'></i> Factures</a>
+                </li>
+                <li data-page="historique">
+                    <a href="historique.html">
+                        <i class='bx bx-data'></i> Historique
+                    </a>
+                </li>
+                <li data-page="settings">
+                    <a href="settings.html"><i class='bx bx-cog'></i> Paramètres</a>
+                </li>
+
+                <li data-page="auth">
+                    <a href="login.html"><i class='bx bx-log-out'></i> Déconnecter Ossama</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="title_dossier" style="display: flex; align-items: center; justify-content: space-between;">
+                    <h2>Dossier médical de Ossama roubal</h2>
+                    <button onclick="printContainer()" class="print-btn">🖨️</button>
+                </div>
+
+                <div class="card">
+                    <h3>Informations du dossier</h3>
+                    <p><strong>Date de création :</strong> 18/05/2025</p>
+                    <p><strong>Dernière mise à jour :</strong> 06/06/2025</p>
+                    <p><strong>Antécédents médicaux :</strong> Non renseigné</p>
+                    <p><strong>Allergies :</strong> Non renseigné</p>
+                    <p><strong>Médication actuelle :</strong> Non renseigné</p>
+                    <p><strong>Notes :</strong> Aucune note</p>
+                    <p><strong>Statut :</strong> Actif</p>
+                </div>
+
+                <h3>Analyses</h3>
+
+                <div class="card">
+                    <p><strong>Type d'analyse :</strong></p>
+                    <p><strong>Date :</strong> </p>
+                    <p><strong>Résultat :</strong> </p>
+
+                    <h5>Fichiers associés :</h5>
+                    <div class="image-grid">
+                        <a href="" target="_blank">
+                            <img src="" alt="Fichier analyse">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

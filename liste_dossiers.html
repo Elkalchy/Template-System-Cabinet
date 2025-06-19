@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des dossiers de patient</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app/styleDossiers.css">
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+            <h2>Gestion de Cabinet </h2>
+            <ul>
+                <li data-page="accueil">
+                    <a href="index.html"><i class='bx bx-home'></i> Accueil</a>
+                </li>
+                <li data-page="Attente">
+                    <a href="attente.html"><i class='bx bx-time'></i> Salle d'attente</a>
+                </li>
+                <li data-page="patients">
+                    <a href="patients.html" class="active"><i class='bx bx-user'></i> Gestion des Patients</a>
+                </li>
+                <li data-page="rendez_vous">
+                    <a href="rendez_vous.html"><i class='bx bx-calendar'></i> Rendez-vous</a>
+                </li>
+                <li data-page="factures">
+                    <a href="factures.html"><i class='bx bx-file'></i> Factures</a>
+                </li>
+                <li data-page="historique">
+                    <a href="historique.html">
+                        <i class='bx bx-data'></i> Historique
+                    </a>
+                </li>
+                <li data-page="settings">
+                    <a href="settings.html"><i class='bx bx-cog'></i> Paramètres</a>
+                </li>
+
+                <li data-page="auth">
+                    <a href="login.html"><i class='bx bx-log-out'></i> Déconnecter Ossama</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="dossier-container">
+                <div class="title" style="display: flex; align-items: center; justify-content: space-between;">
+                    <h2 class="patient-title">Dossiers du patient : Ossama Roubal
+                    </h2>
+                    <button class="ajouter-btn" onclick="openModal()">
+                        <i class='bx bx-folder-plus'></i>
+                    </button>
+                </div>
+
+                <!-- Modal d'ajout -->
+                <div class="modal-container" id="customModal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ajouter un dossier</h4>
+                            <button class="btn-close" onclick="closeModal()">X</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="myForm" action="" method="post" enctype="multipart/form-data">
+                                <label>Antécédents médicaux :</label>
+                                <textarea name="medical_history" placeholder="Antécédents médicaux"></textarea>
+
+                                <label>Allergies :</label>
+                                <textarea name="allergies" placeholder="Allergies connues"></textarea>
+
+                                <label>Médication actuelle :</label>
+                                <textarea name="current_medication"
+                                    placeholder="Médicaments pris actuellement"></textarea>
+
+                                <label>Notes :</label>
+                                <textarea name="notes" placeholder="Notes supplémentaires"></textarea>
+
+                                <label>
+                                    <input type="checkbox" name="is_active" checked> Activer ce dossier
+                                </label>
+
+                                <hr>
+
+                                <label class="switch-label">
+                                    <input type="checkbox" name="affAnalyse" id="affAnalyse" onchange="toggleAnalyse()">
+                                    <span class="switch-slider"></span>
+                                    Ajouter une analyse
+                                </label>
+
+
+                                <div id="analyseFields" class="analyseFields" style="display:none;">
+                                    <label>Type d'analyse :</label>
+                                    <input type="text" name="type_analyse" placeholder="Type d'analyse">
+
+                                    <label>Date :</label>
+                                    <input type="date" name="date_analyse">
+
+                                    <label>Résultat :</label>
+                                    <textarea name="resultat" placeholder="Résultat de l'analyse"></textarea>
+
+                                    <div class="suppFile" style="display: flex; align-items: center; gap: 10px;">
+                                        <label for="suppFile">Supprimer les anciens fichiers ?</label>
+                                        <select name="suppFile" id="suppFile">
+                                            <option value="sans_Supp" selected>Non</option>
+                                            <option value="avec_Supp">Oui</option>
+                                        </select>
+                                    </div>
+
+                                    <label>Fichiers :</label>
+                                    <input type="file" name="fichier" multiple>
+                                </div>
+                        </div>
+                        <div class="modal-footer" style="text-align: right;">
+                            <button type="button" class="btnFermer" onclick="closeModal()">Fermer</button>
+                            <button type="submit" id="btn1">Enregistrer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partie visites -->
+                <section>
+                    <div class="masqueVisite" style="display: flex; align-items: center; gap: 20px;">
+                        <p class="visite-count">
+                            <strong>Nombre de visites :</strong> 0
+                        </p>
+                        <i class='bx bx-chevron-right' style="cursor: pointer;" onclick="masqueVisite()"
+                            title="Masquer les visites" id="masquer_visite"></i>
+                    </div>
+
+                    <div class="tableau_visite" style="display: none;">
+                        <h3 class="dossier-list-title">Liste des visites en attente</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date de la visite</th>
+                                    <th>Raison</th>
+                                    <th style="text-align: center;">Type Consultation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">Aucune visite trouvée.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Partie dossiers -->
+                    <p class="visite-count"><strong>Nombre de dossiers :</strong> 0</p>
+                    <div class="partie_dossiers">
+                        <h3 class="dossier-list-title">Liste des dossiers</h3>
+                        <ul class="dossier-list">
+                            <li class="dossier-item">
+                                <div class="dossier-header">
+                                    <i class='bx bxs-folder dossier-icon'></i>
+                                    <span class="dossier-id">18-05-2025</span>
+                                        <span class="dossier-actif"><span class="actif-dot"></span></span>
+                                </div>
+                                <div class="dossier-actions">
+                                    <a href="details_dossier.html">
+                                        <i class='bx bx-show'></i></a>
+                                    
+                                    <a href="">
+                                        <i class='bx bx-edit'></i></a>
+                                
+                                    <a href="">
+                                        <i class='bx bx-trash'></i></a>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script JS simple -->
+    <script>
+        function masqueVisite() {
+            const visiteList = document.querySelector('.tableau_visite');
+            const masquerVisiteIcon = document.getElementById('masquer_visite');
+            if (visiteList.style.display === 'none') {
+                visiteList.style.display = 'block';
+                masquerVisiteIcon.style.transform = 'rotate(90deg)';
+            } else {
+                visiteList.style.display = 'none';
+                masquerVisiteIcon.style.transform = 'rotate(0deg)';
+            }
+
+        }
+
+
+        function openModal() {
+            container = document.querySelector('.dossier-container');
+            if (container) {
+                container.style.backdropFilter = 'none';
+            }
+            document.getElementById('customModal').style.display = 'block';
+        }
+
+
+        function closeModal() {
+            container = document.querySelector('.dossier-container');
+            if (container) {
+                container.style.backdropFilter = ' blur(20px)';
+            }
+            document.getElementById("customModal").style.display = "none";
+        }
+
+
+        function toggleAnalyse() {
+            const checkbox = document.getElementById('affAnalyse');
+            const fields = document.getElementById('analyseFields');
+            fields.style.display = checkbox.checked ? 'grid' : 'none';
+        }
+
+
+        document.getElementById('suppFile').addEventListener('change', function () {
+            if (this.value === 'avec_Supp') {
+                alert("Les anciens fichiers associés à cette analyse seront supprimés.");
+            }
+        });
+    </script>
+</body>
+
+</html>

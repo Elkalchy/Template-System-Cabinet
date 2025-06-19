@@ -1,0 +1,88 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+
+
+.main-content {
+  width:100%;
+  flex: 1;
+  padding: 10px;
+  background-color: #0e86be00;
+  margin: 10px 10px 10px 290px;
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Barre latérale */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #02162b;
+  color: white;
+  padding: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 217, 255, 0.692);
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  background-color: #24384a98;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid transparent;
+  transition: border 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 217, 255, 0.8);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  transition: all 0.5s ease;
+  border-bottom: 1px solid #18464e;
+  border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #0f5daa;
+  word-spacing: 1.5px;
+}
+
+.sidebar ul li a.active {
+  background-color: #0f5daa;
+  transform: scale(1.05);
+}

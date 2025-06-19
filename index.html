@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Tableau de Bord</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app/styleIndex.css ">
+    <link rel="stylesheet" href="static/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: url("static/img/images/dentaire.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="static/img/images/icons.gif">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+            <h2>Gestion de Cabinet </h2>
+            <ul>
+                <li data-page="accueil">
+                    <a href="index.html" class="active"><i class='bx bx-home'></i> Accueil</a>
+                </li>
+                <li data-page="Attente">
+                    <a href="attente.html"><i class='bx bx-time'></i> Salle d'attente</a>
+                </li>
+                <li data-page="patients">
+                    <a href="patients.html"><i class='bx bx-user'></i> Gestion des Patients</a>
+                </li>
+                <li data-page="rendez_vous">
+                    <a href="rendez_vous.html"><i class='bx bx-calendar'></i> Rendez-vous</a>
+                </li>
+                <li data-page="factures">
+                    <a href="factures.html"><i class='bx bx-file'></i> Factures</a>
+                </li>
+                <li data-page="historique">
+                    <a href="historique.html">
+                        <i class='bx bx-data'></i> Historique
+                    </a>
+                </li>
+                <li data-page="settings">
+                    <a href="settings.html"><i class='bx bx-cog'></i> Paramètres</a>
+                </li>
+
+                <li data-page="auth">
+                    <a href="login.html"><i class='bx bx-log-out'></i> Déconnecter Ossama</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+
+            <header class="dashboard-header">
+                <div class="header-container" style="float: right; ">
+                    <div class="input-container">
+                        <i class="bx bx-search"></i>
+                        <input type="text" id="search-input" placeholder="Recherche">
+                    </div>
+                </div>
+                <h1>Tableau de Bord </h1>
+                <p>Bienvenue, ici vous pouvez suivre toutes les informations relatives à votre Cabine.</p>
+            </header>
+
+            <!-- Statistiques -->
+            <section class="statistics">
+                <div class="stat-card">
+                    <h3><i class='bx bx-group'></i> Total des patients</h3>
+                    <p><strong>120</strong> patient(s)</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3><i class='bx bx-time-five'></i> Patients en attente</h3>
+                    <p><strong>2</strong> patient(s)</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3><i class='bx bx-check-circle'></i> Consultations terminées</h3>
+                    <p><strong>0</strong> patient(s)</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3><i class='bx bx-check-circle'></i> Contrôles terminés</h3>
+                    <p><strong>1</strong> patient(s)</p>
+                </div>
+
+            </section>
+
+
+            <!-- Tableau résumé -->
+            <section class="recent-appointments">
+                <div class="titleTableau">
+                    <h2>Rendez-vous de demain</h2>
+                </div>
+
+                <table id="patients-table">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th>Tel</th>
+
+                            <th style="text-align:center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">Aucun patient trouvé.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById('search-input');
+            const table = document.getElementById('patients-table');
+            const rows = table.querySelectorAll('tbody tr');
+        
+            // Recherche
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+        
+                rows.forEach(function (row) {
+                    const cells = row.querySelectorAll('td');
+                    let matchFound = false;
+        
+                    cells.forEach(function (cell) {
+                        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                            matchFound = true;
+                        }
+                    });
+        
+                    row.style.display = matchFound ? '' : 'none';
+                });
+            });
+        
+            // Sélection
+            rows.forEach(row => {
+                row.addEventListener("click", function () {
+                    rows.forEach(r => r.classList.remove("selected"));
+                    this.classList.add("selected");
+                });
+            });
+        });
+        
+    </script>
+</body>
+
+</html>
